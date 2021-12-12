@@ -5,7 +5,7 @@ public class Main
     public static final int populationSize = 100;
     public static final double mutationRate = 0.1;
     public static final double crossoverRate = 0.9;
-    public static final int selectionSize = 3;
+    public static final int selectionSize = 5;
     public static final int eliteScedule = 1;   
     private int classNum = 1;
     private Data data;
@@ -41,6 +41,8 @@ public class Main
         System.out.print("                        ");
         System.out.print("--------------------------------------------------");
         System.out.println("---------------------------------------------------------------");
+        System.out.println("es " + events.size());
+        System.out.println("ss " + schedule.getEvents().size());
         events.forEach(x -> {
             int majorIndex = data.getPrograms().indexOf(x.getSubject().getProgram());
             int subjectIndex = data.getSubjects().indexOf(x.getSubject());
@@ -57,6 +59,10 @@ public class Main
             System.out.print(String.format("%1$18s", data.getProfessors().get(professorIndex).getName() + " |  "));
             System.out.println(data.getLectureTimes().get(lectureTimeIndex).getDay() + " " + data.getLectureTimes().get(lectureTimeIndex). getTime());
             classNum++;
+            String[][] a = new String[7][events.size()];
+            //for
+            a[1][0] = String.format("%1$4s", data.getPrograms().get(majorIndex).getName());
+            System.out.println(a);
 
         });
 
