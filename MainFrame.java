@@ -9,15 +9,34 @@ public class MainFrame extends JFrame
         this.setTitle("Loja Pong");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(new Color(111,163,35));
-        this.getContentPane().add(new MainPanel());
-        this.pack(); 
         this.setVisible(true);
-        this.setLocationRelativeTo(null);
+       // this.setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) 
     {
-        new MainFrame();
+        MainFrame frame = new MainFrame();
+        MainPanel panel = new MainPanel(new Data());
+        
+        frame.getContentPane().add(panel);
+        frame.pack();
+        Thread th = new Thread() {
+            @Override
+            public void run() {
+                while(panel.pop.getSchedules().get(0).getFitness() != 1)
+                {
+                    panel.evolveTables();
+                    try {
+                        Thread.sleep(850);
+                    }catch(Exception e) {
+
+                    }
+                   
+                }   
+            };
+        };
+
+        th.start();
     }
 }
 

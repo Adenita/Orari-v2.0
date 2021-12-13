@@ -1,28 +1,52 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.FlowLayout.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
+import javax.swing.Timer.*;
 
 public class Test extends JFrame
 {
-    public Test () {
+
+    public Test () throws InterruptedException {
         this.setTitle("Test");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(Color.BLACK);
-        this.getContentPane().add(new TestPanel());
         this.pack(); 
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+    }
+    public static void main(String[] args) throws InterruptedException {
+
+        Test test = new Test();
+        TestPanel testPanel = new TestPanel(new Data());
+        
+        test.getContentPane().add(testPanel);
+        test.pack();
+        Thread th = new Thread() {
+            @Override
+            public void run() {
+                while(testPanel.pop.getSchedules().get(0).getFitness() != 1)
+                {
+                    testPanel.evolveTables();
+                    try {
+                    Thread.sleep(850);
+                    }catch(Exception e) {
+
+                    }
+                   
+                }   
+            };
+        };
+
+        th.start();
 
     }
-    public static void main(String[] args) {
-        new Test();     
-    }
-
 }
 
 class TestPanel extends JPanel 
@@ -40,19 +64,24 @@ class TestPanel extends JPanel
     private JScrollPane scrollPane;
     Image image;
     Graphics graphics;
+    Timer timer;
+    Population pop;
+    GeneticAlgorithm ga;
+    TimerTask task;
 
 
-    public TestPanel() 
+    public TestPanel(Data data) throws InterruptedException 
     {
-        setPreferredSize(new Dimension(1000, 550));
+        setPreferredSize(new Dimension(1000, 580));
         setBackground(Color.pink);
         setFocusable(true); 
         setLayout(new FlowLayout());
         
-        data = new Data();
+       
         int generation = 0;
-        GeneticAlgorithm ga = new GeneticAlgorithm(data);
-        Population pop = new Population(Main.populationSize, data).sortByFitness();
+        this.data = data;
+        ga = new GeneticAlgorithm(data);
+        pop = new Population(Main.populationSize, data).sortByFitness();
         
         getTables(pop, generation);
         styleTable(table);
@@ -60,29 +89,31 @@ class TestPanel extends JPanel
 
         scrollPane = new JScrollPane(table);
         add(scrollPane);
+       
 
-        if (pop.getSchedules().get(0).getFitness() != 1)
-        this.remove(scrollPane);
-
-        evolveTables(ga, pop, generation);
-
+        System.out.println("before timer");
         
-
-        // Thread gameThread = new Thread((Runnable) this);
-        // gameThread.start();
+    
     }
 
-    public void evolveTables(GeneticAlgorithm ga, Population pop, int generation) {
-        while(pop.getSchedules().get(0).getFitness() != 1)
-        {
-            pop = ga.evolve(pop).sortByFitness();
-            getTables(pop, generation);
-            styleTable(table);
-            classNum = 1;
-            scrollPane = new JScrollPane(table);
-            add(scrollPane);
+     
 
-        }
+
+
+    public void evolveTables() {
+
+        remove(scrollPane);
+        System.out.println("Old schedule removed");
+        classNum = 1;
+        pop = ga.evolve(pop).sortByFitness();
+        getTables(pop, 0);
+        styleTable(table);
+        scrollPane = new JScrollPane(table);
+        add(scrollPane);
+        System.out.println("New schedule displayed");
+       
+        revalidate();
+        repaint();                    
     }
 
     public void getTables(Population pop, int generation) {
@@ -108,21 +139,6 @@ class TestPanel extends JPanel
             table.getColumnModel().getColumn(i).setCellRenderer(cellRenderer);
         }
     }
-
-    // public void paint(Graphics g) 
-    // {
-	// 	image = createImage(getWidth(), getHeight());
-	// 	graphics = image.getGraphics();
-	// 	draw(graphics);
-	// 	g.drawImage(image, 0, 0, this); 
-    //     // super.paintComponent(g);
-	// }
-
-    public void draw(Graphics g, Schedule schedule) 
-    {
-       
-             
- 	}
 
     public String[][] getData(Schedule schedule, int generation) 
     {
@@ -162,7 +178,6 @@ class TestPanel extends JPanel
     public String[] getTableHeader() {
         return new String[] {"Event #", " Program ","             Subject                 ","  ClassRoom   "," Student Group ","  Professor      ", "    Lecture time   "};
     }
-
 
 }
 
