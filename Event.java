@@ -16,7 +16,7 @@ public class Event
 
     public Event(Subject subject){
         this.subject = subject;
-        this.id = ++count;
+        this.id = count++;
     }
 
     public int getId() {

@@ -20,8 +20,8 @@ public class Data
     {
         department = new Department(2021, "Matematike");
 
-		Program shkencaKomputerike = new Program("SHK", department);
-        Program matematikeFinanciare = new Program("MF", department);
+		Program shkencaKomputerike =      new Program("ShK", department);
+        Program matematikeFinanciare =    new Program("MF", department);
         Program matematikeEPergjithshme = new Program("M", department);
         programs = new ArrayList<Program>(Arrays.asList(shkencaKomputerike, matematikeFinanciare, matematikeEPergjithshme));
     
@@ -176,50 +176,50 @@ public class Data
 		classrooms = new ArrayList<Classroom>(Arrays.asList(class1, class2, class3, class4, class5, class6));
 		
 
-		Professor professor1 = new Professor(1,   "  A. Berisha ", "Professor");
-		Professor professor2 = new Professor(2,   "  E. Bytyci  ", "Professor");
-		Professor professor3 = new Professor(3,   "  F. Berisha ", "Professor");
+		Professor professor1 = new Professor(1,   "A. Berisha", "Professor");
+		Professor professor2 = new Professor(2,   "E. Bytyci", "Professor");
+		Professor professor3 = new Professor(3,   "F. Berisha ", "Professor");
 		Professor professor4 = new Professor(4,   "B. Fejzullahu", "Professor");
-		Professor professor5 = new Professor(5,   "  R. Limani  ", "Professor");
-		Professor professor6 = new Professor(6,   "  A. Shabani ", "Professor");
-		Professor professor7 = new Professor(7,   "  N. Braha   ", "Professor");
+		Professor professor5 = new Professor(5,   "R. Limani", "Professor");
+		Professor professor6 = new Professor(6,   "A. Shabani", "Professor");
+		Professor professor7 = new Professor(7,   "N. Braha", "Professor");
 
-		Professor professor11 = new Professor(1,  "  A. Berisha ", "Assistent");
+		Professor professor11 = new Professor(1,  "A. Berisha", "Assistent");
 		
-        Professor professor16 = new Professor(16, "  E.Bajrami  ", "Professor");
-		Professor professor161 = new Professor(16,"  E.Bajrami  ", "Assistent");
+        Professor professor16 = new Professor(16, "E. Bajrami", "Professor");
+		Professor professor161 = new Professor(16,"E. Bajrami", "Assistent");
 
-        Professor professor25=  new Professor(25, "  B.Baxhaku  ", "Professor");
-        Professor professor23 = new Professor(23, "   S.Rexhepi ", "Professor");
+        Professor professor25=  new Professor(25, "B. Baxhaku", "Professor");
+        Professor professor23 = new Professor(23, "S. Rexhepi", "Professor");
 
-        Professor professor24 = new Professor(24, "   S.Ahmeti  ", "Professor");
-        Professor asistenti14 = new Professor(38, " A.Kalimashi ", "Assistent");
+        Professor professor24 = new Professor(24, "S. Ahmeti", "Professor");
+        Professor asistenti14 = new Professor(38, "A. Kalimashi", "Assistent");
 
-		Professor professor41 = new Professor(41, "  B. Latifi  ", "Assistent");
-		Professor professor8 = new Professor(8,   "  A. Hulaj   ", "Assistent");
-		Professor professor9 = new Professor(9,   "  M. Racaj   ", "Assistent");
-        Professor professor10 = new Professor(10, "  E.Rogova   ", "Professor");
-        Professor professor12 = new Professor(12, "  F.Marevci  ", "Professor");
-        Professor professor13 = new Professor(13, "  R.Gjergji  ", "Pofessor");
-        Professor professor14 = new Professor(11, "  G.Bujupaj  ", "Professor");
-        Professor professor15 = new Professor(15, "   E.Fejza   ", "Professor");
-        Professor professor17 = new Professor(17, "   M.Gashi    ", "Professor");
-        Professor professor18 = new Professor(18,"  E.Bajrami   ", "Professor");
-        Professor professor19 = new Professor(19,"   K.Bllaca   ", "Professor");
-        Professor professor20 = new Professor(20, "  M.Lohaj   ", "Professor");
-        Professor professor21 = new Professor(21,"  S.Avdijaj  ", "Professor");
-        Professor professor22 = new Professor(22,"  R.Zejnullahu" ,"Professor");
-        Professor professor26 = new Professor(14,"  F.Marevci ", "Professor");
+		Professor professor41 = new Professor(41, "B. Latifi", "Assistent");
+		Professor professor8 = new Professor(8,   "A. Hulaj", "Assistent");
+		Professor professor9 = new Professor(9,   "M. Racaj", "Assistent");
+        Professor professor10 = new Professor(10, "E.Rogova", "Professor");
+        Professor professor12 = new Professor(12, "F.Marevci", "Professor");
+        Professor professor13 = new Professor(13, "R.Gjergji", "Pofessor");
+        Professor professor14 = new Professor(11, "G. Bujupaj", "Professor");
+        Professor professor15 = new Professor(15, "E. Fejza", "Professor");
+        Professor professor17 = new Professor(17, "M. Gashi", "Professor");
+        Professor professor18 = new Professor(18,"E. Bajrami", "Professor");
+        Professor professor19 = new Professor(19,"K. Bllaca", "Professor");
+        Professor professor20 = new Professor(20, "M. Lohaj", "Professor");
+        Professor professor21 = new Professor(21,"S. Avdijaj", "Professor");
+        Professor professor22 = new Professor(22,"R. Zejnullahu" ,"Professor");
+        Professor professor26 = new Professor(14,"F. Marevci ", "Professor");
 
-        Professor asistenti2 = new Professor(26,"  M.Mustafa  " , "Assistent");
-        Professor asistenti3 = new Professor(27,"  Fj.Berisha ", "Assistent");
-        Professor asistenti4 = new Professor(28,"  A.Ferizi   ", "Assistent");
-        Professor asistenti7 = new Professor(31," A.Hajredinaj", "Assistent");
-        Professor asistenti8 = new Professor(32,"   A.Salihu  ", "Assistent");
-        Professor asistenti9 = new Professor(33,"  B.Kamishi   ", "Assistent");
-        Professor asistenti10 = new Professor(34,"SH.Surdulli  ", "Assistent");
-        Professor asistenti11 = new Professor(35,"  K.Rrmoku   ", "Assistent");
-        Professor asistenti13 = new Professor(37,"  V.Kelmendi ", "Assistent");
+        Professor asistenti2 = new Professor(26,"M. Mustafa" , "Assistent");
+        Professor asistenti3 = new Professor(27,"Fj. Berisha", "Assistent");
+        Professor asistenti4 = new Professor(28,"A. Ferizi", "Assistent");
+        Professor asistenti7 = new Professor(31,"A. Hajredinaj", "Assistent");
+        Professor asistenti8 = new Professor(32,"A. Salihu", "Assistent");
+        Professor asistenti9 = new Professor(33,"B. Kamishi", "Assistent");
+        Professor asistenti10 = new Professor(34,"SH. Surdulli", "Assistent");
+        Professor asistenti11 = new Professor(35,"K. Rrmoku", "Assistent");
+        Professor asistenti13 = new Professor(37,"V. Kelmendi", "Assistent");
 
 
 		professors = new ArrayList<Professor>(Arrays.asList(professor1, professor2, professor3, professor4, professor5, professor6, professor7, professor8, professor9, professor11, professor161,
@@ -227,25 +227,23 @@ public class Data
 															professor21, professor22, professor23,professor24, professor14, professor25, professor26, asistenti2,asistenti3,asistenti4,asistenti7,asistenti8,
 															asistenti9,asistenti10,asistenti11,asistenti13,asistenti14));
 
-		Subject subject1 = new Subject(5001, "  Grafika Kompjuterike   ", shkencaKomputerike, true, "Zgj", 4);
-		Subject subject2 = new Subject(5002, "Inteligjence Artificiale ", shkencaKomputerike, false, "Zgj", 4);
-		Subject subject3 = new Subject(5003, "    Analize Numerike 2   ", shkencaKomputerike, false, "Obl", 4);
-		Subject subject4 = new Subject(5004, "     Teori e Gjases      ", shkencaKomputerike, false, "Obl", 4);
-		Subject subject5 = new Subject(5005, "      OOP & GUI          ", shkencaKomputerike, true, "Obl", 4);
-        Subject subject6 = new Subject(5006, "AK ", shkencaKomputerike, false, "Zgj", 3);
-        Subject subject7 = new Subject(5007, "K2 ", shkencaKomputerike, false, "Obl", 3);
+		Subject subject1 = new Subject(5001, "Grafika Kompjuterike", shkencaKomputerike, true, "Zgj", 4);
+		Subject subject2 = new Subject(5002, "Inteligjence Artificiale", shkencaKomputerike, false, "Zgj", 4);
+		Subject subject3 = new Subject(5003, "Analize Numerike 2", shkencaKomputerike, false, "Obl", 4);
+		Subject subject4 = new Subject(5004, "Teori e Gjases", shkencaKomputerike, false, "Obl", 4);
+		Subject subject5 = new Subject(5005, "OOP & GUI", shkencaKomputerike, true, "Obl", 4);
 
-		Subject subject32 = new Subject(5032, "      Analize 4         ", matematikeFinanciare,false, "Obl", 4);
-        Subject subject33 = new Subject(5033, "  Matematike financiare ", matematikeFinanciare,false, "Obl", 4);
-        Subject subject34 = new Subject(5033, "    Teoria e gjases 2   ", matematikeFinanciare,false, "Obl", 4);
-        Subject subject35 = new Subject(5035, "     Menaxhimi bankar   ", matematikeFinanciare,true, "Zgj", 4);
-        Subject subject36 = new Subject(5036, "   Analiza financiare   ", matematikeFinanciare,false, "Zgj", 4);
+		Subject subject32 = new Subject(5032, "Analize 4", matematikeFinanciare,false, "Obl", 4);
+        Subject subject33 = new Subject(5033, "Matematike financiare", matematikeFinanciare,false, "Obl", 4);
+        Subject subject34 = new Subject(5033, "Teoria e gjases 2", matematikeFinanciare,false, "Obl", 4);
+        Subject subject35 = new Subject(5035, "Menaxhimi bankar", matematikeFinanciare,true, "Zgj", 4);
+        Subject subject36 = new Subject(5036, "Analiza financiare", matematikeFinanciare,false, "Zgj", 4);
 
-		Subject subject17 = new Subject(5017, "       Integralet         ", matematikeEPergjithshme,false, "Obl", 4);
-        Subject subject21 = new Subject(5021, "    Teoria e Numrave    ", matematikeEPergjithshme,false, "Obl", 4);
-        Subject subject19 = new Subject(5019, "  Gjeometria deskriptive  ", matematikeEPergjithshme,false, "Obl", 4);
-        Subject subject20 = new Subject(5020, "      Baza e te dhenave  ", matematikeEPergjithshme,false, "Zgj", 4);
-        Subject subject22 = new Subject(5022, "   Matematika Numerike  ", matematikeEPergjithshme,false, "Zgj", 4);
+		Subject subject17 = new Subject(5017, "Integralet", matematikeEPergjithshme,false, "Obl", 4);
+        Subject subject21 = new Subject(5021, "Teoria e Numrave", matematikeEPergjithshme,false, "Obl", 4);
+        Subject subject19 = new Subject(5019, "Gjeometria deskriptive", matematikeEPergjithshme,false, "Obl", 4);
+        Subject subject20 = new Subject(5020, "Baza e te dhenave", matematikeEPergjithshme,false, "Zgj", 4);
+        Subject subject22 = new Subject(5022, "Matematika Numerike", matematikeEPergjithshme,false, "Zgj", 4);
 
 
 		subject1.addProfessors(new ArrayList<Professor>(Arrays.asList(professor1, professor11)));
@@ -267,23 +265,23 @@ public class Data
 		subject36.addProfessors(new ArrayList<Professor>(Arrays.asList(professor24, asistenti14)));
 
 
-		subjects = new ArrayList<Subject>(Arrays.asList(subject1, subject2, subject3, subject4, subject5, subject6, subject7,  
+		subjects = new ArrayList<Subject>(Arrays.asList(subject1, subject2, subject3, subject4, subject5,
 														subject17,subject19,subject20, subject21, subject22,  
 														subject32,subject33,subject34,subject35, subject36));
 
 		studentsGroups = new ArrayList<>();
-		StudentsGroup g1shk = new StudentsGroup(101, "SG1", 30, shkencaKomputerike, true);
-		StudentsGroup g2shk = new StudentsGroup(102, "SG2", 25, shkencaKomputerike, true);
-		StudentsGroup gshkT = new StudentsGroup(104, "SG-1", 55, shkencaKomputerike, true);
-		StudentsGroup gshk = new StudentsGroup(103, "SG", 55, shkencaKomputerike, false);
+		StudentsGroup g1shk = new StudentsGroup(101, "ShK-Gr1", 30, shkencaKomputerike, true);
+		StudentsGroup g2shk = new StudentsGroup(102, "ShK-Gr2", 25, shkencaKomputerike, true);
+		StudentsGroup gshkT = new StudentsGroup(104, "ShK-GrP", 55, shkencaKomputerike, true);
+		StudentsGroup gshk = new StudentsGroup(103, "ShK-Gr", 55, shkencaKomputerike, false);
 
-		StudentsGroup g1m = new StudentsGroup(201, "MG1", 20, matematikeEPergjithshme, true);
-		StudentsGroup g2m = new StudentsGroup(202, "MG2", 20, matematikeEPergjithshme, true);
-		StudentsGroup gmT = new StudentsGroup(204, "MG-1", 40, matematikeEPergjithshme, true);
-		StudentsGroup gm = new StudentsGroup(203, "MG", 40, matematikeEPergjithshme, false);
+		StudentsGroup g1m = new StudentsGroup(201, "M-Gr1", 20, matematikeEPergjithshme, true);
+		StudentsGroup g2m = new StudentsGroup(202, "M-Gr2", 20, matematikeEPergjithshme, true);
+		StudentsGroup gmT = new StudentsGroup(204, "M-GrP", 40, matematikeEPergjithshme, true);
+		StudentsGroup gm = new StudentsGroup(203, "M-Gr", 40, matematikeEPergjithshme, false);
 
-		StudentsGroup gmf = new StudentsGroup(304, "MFG", 25, matematikeFinanciare, false);
-		StudentsGroup gmfT = new StudentsGroup(303, "MFG-1", 25, matematikeFinanciare, true);
+		StudentsGroup gmf = new StudentsGroup(304, "MF-Gr", 25, matematikeFinanciare, false);
+		StudentsGroup gmfT = new StudentsGroup(303, "MF-Gr1", 25, matematikeFinanciare, true);
 
 
 		studentsGroups.add(g1shk);
