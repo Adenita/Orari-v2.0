@@ -1,13 +1,16 @@
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
+
 
 class MainPanel extends JPanel 
 {
@@ -21,6 +24,7 @@ class MainPanel extends JPanel
     private Data data;
     private int yp = 0;
     private DefaultTableCellRenderer cellRenderer;
+    private CustomTableRenderer tableRenderer;
     private JTable table;
     private JScrollPane scrollPane;
     Population pop;
@@ -29,18 +33,13 @@ class MainPanel extends JPanel
 
     public MainPanel(Data data) 
     {
-        //Style panel
-        setPreferredSize(new Dimension(1000, 580));
-        setBackground(Color.white);
-        setFocusable(true); 
-        setLayout(new FlowLayout());
+        this.data = data;
+        setPanel();
         
         int generation = 0;
-        this.data = data;
         ga = new GeneticAlgorithm(data);
         pop = new Population(populationSize, data).sortByFitness();
-        System.out.println("generate new population");
-        
+
         getTables(pop, generation);
         styleTable(table);
         ++generation;
@@ -51,12 +50,19 @@ class MainPanel extends JPanel
 
     }
 
+    // Style panel
+    public void setPanel(){
+        this.setPreferredSize(new Dimension(1000, 580));
+        this.setBackground(Color.white);
+        this.setFocusable(true); 
+        this.setLayout(new FlowLayout());
+    }
+
     public void evolveTables() {
 
         remove(scrollPane);
         classNum = 1;
         pop = ga.evolve(pop).sortByFitness();
-        System.out.println("evolve population");
         getTables(pop, 0);
         styleTable(table);
         scrollPane = new JScrollPane(table);
@@ -67,7 +73,20 @@ class MainPanel extends JPanel
     }
 
     public void getTables(Population pop, int generation) {
-        table = new JTable(getData(pop.getSchedules().get(0), generation), getTableHeader());
+        // table.setModel(new AbstractTableModel() {
+        //     @Override
+        //     public Class<?> getColumnClass(int column) {
+        //     return String.class;
+        // });
+        
+       // final CustomTableRenderer tableRenderer = new CustomTableRenderer();
+        table = new JTable(getData(pop.getSchedules().get(0), generation), getTableHeader()) {
+            @Override
+            public Class<?> getColumnClass(int column) {
+            return String.class;
+            }
+        };
+
         table.setPreferredScrollableViewportSize(new Dimension(1000, 550));
         table.setFillsViewportHeight(true);
     }
@@ -82,11 +101,14 @@ class MainPanel extends JPanel
         table.getColumnModel().getColumn(5).setPreferredWidth(150);
         table.getColumnModel().getColumn(6).setPreferredWidth(150);
 
-        cellRenderer = new DefaultTableCellRenderer();
-        cellRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tableRenderer = new CustomTableRenderer(pop.getSchedules().get(0));
+        table.setDefaultRenderer(String.class, tableRenderer);
+
+        tableRenderer.setHorizontalAlignment(JLabel.CENTER);
+        table.setFont(new Font("Georgia", Font.PLAIN, 12));
 
         for (int i = 0; i < 7; i++) {
-            table.getColumnModel().getColumn(i).setCellRenderer(cellRenderer);
+            table.getColumnModel().getColumn(i).setCellRenderer(tableRenderer);
         }
     }
 

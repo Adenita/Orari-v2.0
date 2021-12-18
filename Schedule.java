@@ -7,7 +7,9 @@ public class Schedule
     private double fitness = -1;
     private int numberOfConflicts = 0;
     private Data data;
-
+    private int rowNum = 0;
+    private boolean[][] bool;
+    
     public Data getData() {
         return data;
     }
@@ -54,26 +56,50 @@ public class Schedule
 
     private double calcFitness() {
         numberOfConflicts = 0;
+        rowNum = 0;
+        bool = new boolean[34][7];
+        fillBool(bool);
         events.forEach(x -> {
-            if (x.getClassroom().getNumberOfSeats() < x.getGroup().getNumberOfStudents()) { numberOfConflicts++; 
+            if (x.getClassroom().getNumberOfSeats() < x.getGroup().getNumberOfStudents()) { 
+                numberOfConflicts++; 
+                bool[x.getId() % 34][3] = true;
+                bool[x.getId() % 34][4] = true;
                 x.setConflict(true);
             }
             events.forEach(y -> { 
                 if(y.getId() > x.getId()) { 
                 if (x.getLectureTime().collision(y.getLectureTime())) {
                     if (x.getClassroom().getClassID() == (y.getClassroom().getClassID())) {
-                     numberOfConflicts++;
-                     y.setConflict(true);
+                        numberOfConflicts++;
+                        bool[y.getId()  % 34][3] = true;
+                        bool[y.getId() % 34][6] = true;
+                        bool[x.getId() % 34][3] = true;
+                        bool[x.getId() % 34][6] = true;
+                        y.setConflict(true);
                     }
                     if (x.getProfessor().getID() ==  y.getProfessor().getID()) {
                         numberOfConflicts++;
+                        bool[y.getId() % 34][5] = true;
+                        bool[y.getId() % 34][6] = true;
+                        bool[x.getId() % 34][5] = true;
+                        bool[x.getId() % 34][6] = true;
                         y.setConflict(true);
                     }   
                 }
                 }
             });
+            rowNum++;
+           
         });
         return 1/(double)(numberOfConflicts + 1);
+    }
+
+    public void fillBool(boolean[][] bool) {
+        for (int i = 0; i < bool.length; i++) {
+            for (int j = 0; j < bool[0].length; j++) {
+                bool[i][j] = false;
+            }
+        }
     }
 
     public String toString() {
@@ -83,5 +109,9 @@ public class Schedule
         }
         val += events.get(events.size() - 1);
         return val;
+    }
+
+    public boolean[][] getCollisionTable(){
+        return bool;
     }
 }
