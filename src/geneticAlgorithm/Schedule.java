@@ -1,3 +1,5 @@
+package geneticAlgorithm;
+
 import java.util.ArrayList;
 
 public class Schedule 
@@ -7,7 +9,6 @@ public class Schedule
     private double fitness = -1;
     private int numberOfConflicts = 0;
     private Data data;
-    private int rowNum = 0;
     private boolean[][] bool;
     
     public Data getData() {
@@ -28,7 +29,6 @@ public class Schedule
                     newEvent.setProfessor(data.getProfessorsPerSubject(subject, group.getIsExercise()).get((int)(data.getProfessorsPerSubject(subject, group.getIsExercise()).size() * Math.random())));
                     newEvent.setGroup(group);
                     events.add(newEvent);
-                    
                 });
 
             }));
@@ -36,7 +36,6 @@ public class Schedule
         return this;
     }
     
-    // shto edhe soft conditions p.sh. profa 1 preferon me i mbajt ligjeratat paradite
     public int getNumOfConf() {
         return numberOfConflicts;
     }
@@ -56,7 +55,6 @@ public class Schedule
 
     private double calcFitness() {
         numberOfConflicts = 0;
-        rowNum = 0;
         bool = new boolean[34][7];
         fillBool(bool);
         events.forEach(x -> {
@@ -66,29 +64,35 @@ public class Schedule
                 bool[x.getId() % 34][4] = true;
                 x.setConflict(true);
             }
+            if (x.getProfessor().getPreferedStartTime() > x.getLectureTime().getStartTime().toMinutes()) {
+                numberOfConflicts++;
+                 bool[x.getId() % 34][5] = true;
+                 bool[x.getId() % 34][6] = true;
+                x.setConflict(true);
+            }
             events.forEach(y -> { 
                 if(y.getId() > x.getId()) { 
-                if (x.getLectureTime().collision(y.getLectureTime())) {
-                    if (x.getClassroom().getClassID() == (y.getClassroom().getClassID())) {
-                        numberOfConflicts++;
-                        bool[y.getId()  % 34][3] = true;
-                        bool[y.getId() % 34][6] = true;
-                        bool[x.getId() % 34][3] = true;
-                        bool[x.getId() % 34][6] = true;
-                        y.setConflict(true);
+                    if (x.getLectureTime().collision(y.getLectureTime())) {
+                        if (x.getClassroom().getClassID() == (y.getClassroom().getClassID())) {
+                            numberOfConflicts++;
+                            bool[y.getId()  % 34][3] = true;
+                            bool[y.getId() % 34][6] = true;
+                            bool[x.getId() % 34][3] = true;
+                            bool[x.getId() % 34][6] = true;
+                            y.setConflict(true);
+                        }
+                        if (x.getProfessor().getID() ==  y.getProfessor().getID()) {
+                            numberOfConflicts++;
+                            bool[y.getId() % 34][5] = true;
+                            bool[y.getId() % 34][6] = true;
+                            bool[x.getId() % 34][5] = true;
+                            bool[x.getId() % 34][6] = true;
+                            y.setConflict(true);
+                        }   
                     }
-                    if (x.getProfessor().getID() ==  y.getProfessor().getID()) {
-                        numberOfConflicts++;
-                        bool[y.getId() % 34][5] = true;
-                        bool[y.getId() % 34][6] = true;
-                        bool[x.getId() % 34][5] = true;
-                        bool[x.getId() % 34][6] = true;
-                        y.setConflict(true);
-                    }   
                 }
-                }
+                
             });
-            rowNum++;
            
         });
         return 1/(double)(numberOfConflicts + 1);

@@ -1,5 +1,11 @@
+package swing;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import geneticAlgorithm.Collision;
+import geneticAlgorithm.Schedule;
+
 import java.awt.*;
 
 //Custom DefaultTableCellRenderer

@@ -1,3 +1,5 @@
+package swing;
+
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -8,11 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableCellRenderer;
+
+import geneticAlgorithm.*;
 
 
-class MainPanel extends JPanel 
+public class SchedulePanel extends JPanel 
 {
     public static final int populationSize = 100;
     public static final double mutationRate = 0.1;
@@ -23,15 +25,14 @@ class MainPanel extends JPanel
 
     private Data data;
     private int yp = 0;
-    private DefaultTableCellRenderer cellRenderer;
     private CustomTableRenderer tableRenderer;
     private JTable table;
     private JScrollPane scrollPane;
-    Population pop;
+    public Population pop;
     GeneticAlgorithm ga;
 
 
-    public MainPanel(Data data) 
+    public SchedulePanel(Data data) 
     {
         this.data = data;
         setPanel();
@@ -73,20 +74,7 @@ class MainPanel extends JPanel
     }
 
     public void getTables(Population pop, int generation) {
-        // table.setModel(new AbstractTableModel() {
-        //     @Override
-        //     public Class<?> getColumnClass(int column) {
-        //     return String.class;
-        // });
-        
-       // final CustomTableRenderer tableRenderer = new CustomTableRenderer();
-        table = new JTable(getData(pop.getSchedules().get(0), generation), getTableHeader()) {
-            @Override
-            public Class<?> getColumnClass(int column) {
-            return String.class;
-            }
-        };
-
+        table = new JTable(getData(pop.getSchedules().get(0), generation), getTableHeader());
         table.setPreferredScrollableViewportSize(new Dimension(1000, 550));
         table.setFillsViewportHeight(true);
     }
