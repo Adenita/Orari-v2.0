@@ -1,3 +1,5 @@
+package geneticAlgorithm;
+
 public class Collision 
 {
     private int row;

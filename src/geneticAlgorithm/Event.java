@@ -1,5 +1,7 @@
+package geneticAlgorithm;
 
 import java.util.ArrayList;
+import model.*;
 
 public class Event 
 {	

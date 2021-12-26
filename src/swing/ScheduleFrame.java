@@ -1,25 +1,27 @@
+package swing;
+
 import java.awt.*;
 import javax.swing.*;
 
-public class MainFrame extends JFrame
-{
+import geneticAlgorithm.Data;
 
-    public MainFrame()
-    {
+
+public class ScheduleFrame extends JFrame {
+    
+    public ScheduleFrame() {
+        initialise();
+    }
+
+    void initialise() {
+        SchedulePanel panel = new SchedulePanel(new Data());
+
         this.setTitle("Orari");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(Color.white);
         this.setVisible(true);
-       // this.setLocationRelativeTo(null);
-    }
-
-    public static void main(String[] args) 
-    {
-        MainFrame frame = new MainFrame();
-        MainPanel panel = new MainPanel(new Data());
-        
-        frame.getContentPane().add(panel);
-        frame.pack();
+        this.add(panel);
+        this.pack();
+        this.setLocationRelativeTo(null);
         Thread th = new Thread() {
             @Override
             public void run() {
@@ -27,11 +29,11 @@ public class MainFrame extends JFrame
                 {
                     panel.evolveTables();
                     try {
-                        Thread.sleep(850);
+                        Thread.sleep(400);
                     }catch(Exception e) {
 
                     }
-                   
+                    
                 }   
             };
         };
@@ -39,4 +41,3 @@ public class MainFrame extends JFrame
         th.start();
     }
 }
-

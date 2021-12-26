@@ -1,9 +1,17 @@
+package geneticAlgorithm;
+
 import java.util.stream.IntStream;
 import java.util.ArrayList;
 
 public class GeneticAlgorithm 
 {
     private Data data;
+
+    public static final int populationSize = 100;
+    public static final double mutationRate = 0.1;
+    public static final double crossoverRate = 0.9;
+    public static final int selectionSize = 5;
+    public static final int eliteScedule = 1; 
 
     public GeneticAlgorithm(Data data){
         this.data = data;
@@ -15,10 +23,10 @@ public class GeneticAlgorithm
 
     Population crossoverPopulation(Population population){
         Population crossOverPopulation = new Population(population.getSchedules().size(), data);
-        IntStream.range(0, Main.eliteScedule).forEach(x -> crossOverPopulation.getSchedules().set(x, population.getSchedules().get(x)));
+        IntStream.range(0, eliteScedule).forEach(x -> crossOverPopulation.getSchedules().set(x, population.getSchedules().get(x)));
     
-        IntStream.range(Main.eliteScedule, population.getSchedules().size()).forEach(x -> {
-            if(Main.crossoverRate > Math.random()) {
+        IntStream.range(eliteScedule, population.getSchedules().size()).forEach(x -> {
+            if(crossoverRate > Math.random()) {
                 Schedule schedule1 = selectPopulation(population).sortByFitness().getSchedules().get(0);
                 Schedule schedule2 = selectPopulation(population).sortByFitness().getSchedules().get(0);
                 crossOverPopulation.getSchedules().set(x, crossoverSchedule(schedule1, schedule2));
@@ -42,7 +50,7 @@ public class GeneticAlgorithm
     Population mutatePopulation(Population population){
         Population mutatePopulation = new Population(population.getSchedules().size(), data);
         ArrayList<Schedule> schedules = mutatePopulation.getSchedules();
-        IntStream.range(0, Main.eliteScedule).forEach(x -> schedules.set(x, population.getSchedules().get(x)));
+        IntStream.range(0, eliteScedule).forEach(x -> schedules.set(x, population.getSchedules().get(x)));
 
 
         return mutatePopulation;
@@ -51,7 +59,7 @@ public class GeneticAlgorithm
     Schedule mutateSchedule(Schedule mutateSchedule) {
         Schedule schedule = new Schedule(data).initialize();
         IntStream.range(0, mutateSchedule.getEvents().size()).forEach(x -> {
-            if(Main.mutationRate > Math.random()) {
+            if(mutationRate > Math.random()) {
                 mutateSchedule.getEvents().set(x, schedule.getEvents().get(x));
             }
         });
@@ -60,8 +68,8 @@ public class GeneticAlgorithm
     }
 
     Population selectPopulation(Population population) {
-        Population selectPopulation = new Population(Main.selectionSize, data);
-        IntStream.range(0, Main.selectionSize).forEach(x ->
+        Population selectPopulation = new Population(selectionSize, data);
+        IntStream.range(0, selectionSize).forEach(x ->
             selectPopulation.getSchedules().set(x, population.getSchedules().get((int) (Math.random() * population.getSchedules().size()))));
         return selectPopulation;
     }

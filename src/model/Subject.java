@@ -1,17 +1,20 @@
+package model;
+
 import java.util.ArrayList;
 
 public class Subject 
 {
     private int subjectID;
     private String name;
-    private Program program;
+    private Program programm;
+    private String program;
     private boolean requiresLab;
     private String stat;
     private int semester;
     private ArrayList<Professor> adequateProfessors;
     private ArrayList<Professor> adequateAssistant;
 
-    public Subject(int subjectID, String name, Program program, boolean requiresLab, String stat, int semester) 
+    public Subject(int subjectID, String name, String program, boolean requiresLab, String stat, int semester) 
     {
         this.subjectID = subjectID;
         this.name = name;
@@ -36,11 +39,19 @@ public class Subject
     }
 
     public Program getProgram() {
+        return programm;
+    }
+
+    public String getProgramN() {
         return program;
     }
 
     public boolean isLabRequired() {
         return requiresLab;
+    }
+
+    public void setProgram(Program programm) {
+        this.programm = programm;
     }
 
     public String getStat() {
