@@ -24,10 +24,8 @@ public class Data
     {
         department = new Department(2021, "Matematike");
 
-		Program shkencaKomputerike =      new Program("shkencaKomputerike", department);
-        Program matematikeFinanciare =    new Program("matematikeFinanciare", department);
-        Program matematikeEPergjithshme = new Program("matematikeEPergjithshme", department);
-        programs = new ArrayList<Program>(Arrays.asList(shkencaKomputerike, matematikeFinanciare, matematikeEPergjithshme));
+		Program shkencaKompjuterike =      new Program("Shkence Kompjuterike", department);
+        programs = new ArrayList<Program>(Arrays.asList(shkencaKompjuterike));
     
 
 		Time ts1 = new Time(8, 0);
@@ -174,168 +172,185 @@ public class Data
 		Classroom class1 = new Classroom(" 153 ", 100, false);
 		Classroom class2 = new Classroom(" 113 ", 50, false);
 		Classroom class3 = new Classroom(" 114 ", 60, false);
-		Classroom class4 = new Classroom("Lab V", 25, true);
-		Classroom class5 = new Classroom("Lab M", 35, true);
-		Classroom class6 = new Classroom(" 112 ", 35, false);
+		Classroom class4 = new Classroom("Lab V", 30, true);
+		Classroom class5 = new Classroom("Lab M", 50, true);
+		Classroom class6 = new Classroom(" 112 ", 30, false);
 		classrooms = new ArrayList<Classroom>(Arrays.asList(class1, class2, class3, class4, class5, class6));
 		
-
-		Professor professor1 = new Professor(1,   "A. Berisha", "Professor", ts1.toMinutes());
-		Professor professor2 = new Professor(2,   "E. Bytyci", "Professor", ts1.toMinutes());
-		Professor professor3 = new Professor(3,   "F. Berisha ", "Professor", ts1.toMinutes());
-		Professor professor4 = new Professor(4,   "B. Fejzullahu", "Professor", ts1.toMinutes());
-		Professor professor5 = new Professor(5,   "R. Limani", "Professor", ts1.toMinutes());
-		Professor professor6 = new Professor(6,   "A. Shabani", "Professor", ts1.toMinutes());
-		Professor professor7 = new Professor(7,   "N. Braha", "Professor", ts1.toMinutes());
-
-		Professor professor11 = new Professor(1,  "A. Berisha", "Assistent", ts1.toMinutes());
 		
-        Professor professor16 = new Professor(16, "E. Bajrami", "Professor", ts1.toMinutes());
-		Professor professor161 = new Professor(16,"E. Bajrami", "Assistent", ts1.toMinutes());
+		Professor professor1 = new Professor(1, "R. Limani", "Professor", ts16.toMinutes());
+		Professor professor2 = new Professor(2, "B. Hasani", "Assistant", ts1.toMinutes());
+		Professor professor3 = new Professor(3, "Q. Gashi"	, "Professor", ts8.toMinutes());
+		Professor professor4 = new Professor(4, "M. Mustafa", "Assistant", ts1.toMinutes());
+		Professor professor5 = new Professor(5, "F. Berisha", "Professor", ts12.toMinutes());
+		Professor professor6 = new Professor(6, "A. Salihu", "Assistant", ts24.toMinutes());
+		Professor professor7 = new Professor(7, "E. Bytyçi", "Professor", ts1.toMinutes());
+		Professor professor7a = new Professor(71, "E. Bytyçi", "Assistant", ts1.toMinutes());
+		Professor professor8 = new Professor(8, "Fj. Berisha", "Assistant", ts1.toMinutes());
+		Professor professor9 = new Professor(9, "V. Caka", "Professor", ts1.toMinutes());
+		Professor professor9a = new Professor(91, "V. Caka", "Assistant", ts1.toMinutes());
+		Professor professor10 = new Professor(10, "N. Braha","Professor" , ts1.toMinutes());
+		Professor professor11 = new Professor(11, "M. Raci", "Assistant", ts20.toMinutes());
+		Professor professor12 = new Professor(12, "E. Rogova", "Professor", ts1.toMinutes());
+		Professor professor13 = new Professor(13, "K. Rrmoku", "Assistant", ts1.toMinutes());
+		Professor professor14 = new Professor(14, "A. Berisha", "Professor", ts1.toMinutes());
+		Professor professor14a = new Professor(141, "A. Berisha", "Assistant", ts1.toMinutes());
+		Professor professor15 = new Professor(15, "A. Shabani", "Professor", ts1.toMinutes());
+		Professor professor15a = new Professor(151, "A. Shabani", "Assistant", ts1.toMinutes());
+		Professor professor16 = new Professor(16, "E. Aliaga", "Professor", ts24.toMinutes());
+		Professor professor17 = new Professor(17, "B. Latifi", "Assistant", ts8.toMinutes());
+		Professor professor18 = new Professor(18,"E. Bajrami", "Professor", ts29.toMinutes());
+		Professor professor19 = new Professor(19, "A. Hulaj", "Assistant", ts30.toMinutes());
+		Professor professor20 = new Professor(20, "A. Elshani", "Professor", ts10.toMinutes());
+		Professor professor21 = new Professor(21, "A. Kalimashi", "Assistant", ts38.toMinutes());
+		Professor professor22 = new Professor(22, "Q. Gashi", "Professor", ts8.toMinutes());
+		Professor professor23 = new Professor(23, "A. Ferizi", "Assistant", ts26.toMinutes());
 
-        Professor professor25=  new Professor(25, "B. Baxhaku", "Professor", ts1.toMinutes());
-        Professor professor23 = new Professor(23, "S. Rexhepi", "Professor", ts1.toMinutes());
-
-        Professor professor24 = new Professor(24, "S. Ahmeti", "Professor", ts1.toMinutes());
-        Professor asistenti14 = new Professor(38, "A. Kalimashi", "Assistent", ts1.toMinutes());
-
-		Professor professor41 = new Professor(41, "B. Latifi", "Assistent", ts1.toMinutes());
-		Professor professor8 = new Professor(8,   "A. Hulaj", "Assistent", ts30.toMinutes());
-		Professor professor9 = new Professor(9,   "M. Racaj", "Assistent", ts1.toMinutes());
-        Professor professor10 = new Professor(10, "E.Rogova", "Professor", ts1.toMinutes());
-        Professor professor12 = new Professor(12, "F.Marevci", "Professor", ts1.toMinutes());
-        Professor professor13 = new Professor(13, "R.Gjergji", "Pofessor", ts1.toMinutes());
-        Professor professor14 = new Professor(11, "G. Bujupaj", "Professor", ts1.toMinutes());
-        Professor professor15 = new Professor(15, "E. Fejza", "Professor", ts1.toMinutes());
-        Professor professor17 = new Professor(17, "M. Gashi", "Professor", ts1.toMinutes());
-        Professor professor18 = new Professor(18,"E. Bajrami", "Professor", ts1.toMinutes());
-        Professor professor19 = new Professor(19,"K. Bllaca", "Professor", ts1.toMinutes());
-        Professor professor20 = new Professor(20, "M. Lohaj", "Professor", ts1.toMinutes());
-        Professor professor21 = new Professor(21,"S. Avdijaj", "Professor", ts1.toMinutes());
-        Professor professor22 = new Professor(22,"R. Zejnullahu" ,"Professor", ts1.toMinutes());
-        Professor professor26 = new Professor(14,"F. Marevci ", "Professor", ts1.toMinutes());
-
-        Professor asistenti2 = new Professor(26,"M. Mustafa" , "Assistent", ts1.toMinutes());
-        Professor asistenti3 = new Professor(27,"Fj. Berisha", "Assistent", ts1.toMinutes());
-        Professor asistenti4 = new Professor(28,"A. Ferizi", "Assistent", ts1.toMinutes());
-        Professor asistenti7 = new Professor(31,"A. Hajredinaj", "Assistent", ts1.toMinutes());
-        Professor asistenti8 = new Professor(32,"A. Salihu", "Assistent", ts1.toMinutes());
-        Professor asistenti9 = new Professor(33,"B. Kamishi", "Assistent", ts1.toMinutes());
-        Professor asistenti10 = new Professor(34,"SH. Surdulli", "Assistent", ts1.toMinutes());
-        Professor asistenti11 = new Professor(35,"K. Rrmoku", "Assistent", ts1.toMinutes());
-        Professor asistenti13 = new Professor(37,"V. Kelmendi", "Assistent", ts1.toMinutes());
+					
+		professors = new ArrayList<Professor>(Arrays.asList(professor1, professor2, professor3, professor4, professor5, professor6, professor7, professor7a, professor8, professor9, professor9a, professor10, 
+															professor11, professor12, professor13, professor14, professor14a, professor15, professor15a, professor16, professor17, professor18,professor19,professor20,
+															professor21, professor22, professor23));
 
 
-		professors = new ArrayList<Professor>(Arrays.asList(professor1, professor2, professor3, professor4, professor5, professor6, professor7, professor8, professor9, professor11, professor161,
-															professor10, professor41, professor12, professor13,professor15, professor16, professor17, professor18,professor19,professor20,
-															professor21, professor22, professor23,professor24, professor14, professor25, professor26, asistenti2,asistenti3,asistenti4,asistenti7,asistenti8,
-															asistenti9,asistenti10,asistenti11,asistenti13,asistenti14));
+         Subject subject1 = new Subject(5000, "Matematika elementare", 6, "Shkence Kompjuterike", false, "O", 1);
+		 Subject subject2 = new Subject(5001, "Matematika diskrete", 6, "Shkence Kompjuterike", false, "O", 1);
+		 Subject subject3 = new Subject(5002, "Programimi dhe algoritmet", 6, "Shkence Kompjuterike", true, "O", 1);
+		 Subject subject4 = new Subject(5003, "Hyrje ne shkencat kompjuterike", 6, "Shkence Kompjuterike", true, "O", 1);
+		 Subject subject5 = new Subject(5004, "Gjuhe angleze I", 5, "Shkence Kompjuterike", false, "O", 1);
+		 Subject subject6 = new Subject(5005, "Kalkulus II", 6, "Shkence Kompjuterike", false, "O", 3);
+		 Subject subject7 = new Subject(5006, "Analize numerike I", 6, "Shkence Kompjuterike", true, "O", 3);
+		 Subject subject8 = new Subject(5007, "Bazat e te dhenave", 6, "Shkence Kompjuterike", true, "O", 3);
+		 Subject subject9 = new Subject(5008, "Arkitektura e kompjutereve dhe sistemet operative", 6, "Shkence Kompjuterike", true, "O", 3);
+		 Subject subject10 = new Subject(5009, "Siguria e te dhenave ne kompjuter", 6, "Shkence Kompjuterike", true, "Z", 3);
+		 Subject subject11 = new Subject(5010, "Matematike konkrete", 5, "Shkence Kompjuterike", false, "Z", 3);
+		 Subject subject12 = new Subject(5011, "Statistike", 6, "Shkence Kompjuterike", true, "O", 5);
+		 Subject subject13 = new Subject(5012, "Programimi ne WWW", 7, "Shkence Kompjuterike", true, "O", 5);
+		 Subject subject14 = new Subject(5013, "Analize e algoritmeve", 7, "Shkence Kompjuterike", true, "O", 5);
+		 Subject subject15 = new Subject(5014, "Kontabiliteti", 5, "Shkence Kompjuterike", false, "Z", 5);
+		 Subject subject16 = new Subject(5015, "Analiza e te dhenave", 5, "Shkence Kompjuterike", false, "Z", 5);
+		 Subject subject17 = new Subject(5016, "Modelim softuerik", 5, "Shkence Kompjuterike", false, "Z", 5);
+		 Subject subject18 = new Subject(5017, "Teori e lojerave", 5, "Shkence Kompjuterike", false, "Z", 5);
 
+		
+		subject1.setProgram(shkencaKompjuterike);
+		subject2.setProgram(shkencaKompjuterike);
+		subject3.setProgram(shkencaKompjuterike);
+		subject4.setProgram(shkencaKompjuterike);
+		subject5.setProgram(shkencaKompjuterike);
+		subject6.setProgram(shkencaKompjuterike);
+		subject7.setProgram(shkencaKompjuterike);
+		subject8.setProgram(shkencaKompjuterike);
+		subject9.setProgram(shkencaKompjuterike);
+		subject10.setProgram(shkencaKompjuterike);
+		subject11.setProgram(shkencaKompjuterike);
+		subject12.setProgram(shkencaKompjuterike);
+		subject13.setProgram(shkencaKompjuterike);
+		subject14.setProgram(shkencaKompjuterike);
+		subject15.setProgram(shkencaKompjuterike);
+		subject16.setProgram(shkencaKompjuterike);
+		subject17.setProgram(shkencaKompjuterike);
+		subject18.setProgram(shkencaKompjuterike);
+				
 
+		subject1.addProfessors(new ArrayList<Professor>(Arrays.asList(professor1, professor2)));
+		subject2.addProfessors(new ArrayList<Professor>(Arrays.asList(professor3, professor4)));
+		subject3.addProfessors(new ArrayList<Professor>(Arrays.asList(professor5, professor6)));
+		subject4.addProfessors(new ArrayList<Professor>(Arrays.asList(professor7, professor8)));
+		subject5.addProfessors(new ArrayList<Professor>(Arrays.asList(professor9, professor9a)));
 
-		Subject subject1 = new Subject(5001, "Grafika Kompjuterike", "shkencaKomputerike", true, "Zgj", 4);
-		Subject subject2 = new Subject(5002, "Inteligjence Artificiale", "shkencaKomputerike", false, "Zgj", 4);
-		Subject subject3 = new Subject(5003, "Analize Numerike 2", "shkencaKomputerike", false, "Obl", 4);
-		Subject subject4 = new Subject(5004, "Teori e Gjases", "shkencaKomputerike", false, "Obl", 4);
-		Subject subject5 = new Subject(5005, "OOP & GUI", "shkencaKomputerike", true, "Obl", 4);
+		subject6.addProfessors(new ArrayList<Professor>(Arrays.asList(professor10, professor4)));
+		subject7.addProfessors(new ArrayList<Professor>(Arrays.asList(professor5, professor11)));
+		subject8.addProfessors(new ArrayList<Professor>(Arrays.asList(professor12, professor13)));
+		subject9.addProfessors(new ArrayList<Professor>(Arrays.asList(professor12, professor13)));
+		subject10.addProfessors(new ArrayList<Professor>(Arrays.asList(professor14, professor14a)));
+		subject11.addProfessors(new ArrayList<Professor>(Arrays.asList(professor15, professor15a)));
+		
 
-		subject1.setProgram(shkencaKomputerike);
-		subject2.setProgram(shkencaKomputerike);
-		subject3.setProgram(shkencaKomputerike);
-		subject4.setProgram(shkencaKomputerike);
-		subject5.setProgram(shkencaKomputerike);
+		subject12.addProfessors(new ArrayList<Professor>(Arrays.asList(professor16, professor17)));
+		subject13.addProfessors(new ArrayList<Professor>(Arrays.asList(professor12, professor13)));
+		subject14.addProfessors(new ArrayList<Professor>(Arrays.asList(professor18, professor19)));
+		subject15.addProfessors(new ArrayList<Professor>(Arrays.asList(professor20, professor21)));
+		subject16.addProfessors(new ArrayList<Professor>(Arrays.asList(professor7, professor7a)));
+		subject17.addProfessors(new ArrayList<Professor>(Arrays.asList(professor7, professor8)));
+		subject18.addProfessors(new ArrayList<Professor>(Arrays.asList(professor22, professor23)));
 
-		Subject subject32 = new Subject(5032, "Analize 4", "matematikeFinanciare",false, "Obl", 4);
-        Subject subject33 = new Subject(5033, "Matematike financiare", "matematikeFinanciare",false, "Obl", 4);
-        Subject subject34 = new Subject(5033, "Teoria e gjases 2", "matematikeFinanciare",false, "Obl", 4);
-        Subject subject35 = new Subject(5035, "Menaxhimi bankar", "matematikeFinanciare",true, "Zgj", 4);
-        Subject subject36 = new Subject(5036, "Analiza financiare", "matematikeFinanciare",false, "Zgj", 4);
+		
 
-		subject32.setProgram(matematikeFinanciare);
-		subject33.setProgram(matematikeFinanciare);
-		subject34.setProgram(matematikeFinanciare);
-		subject35.setProgram(matematikeFinanciare);
-		subject36.setProgram(matematikeFinanciare);
-
-
-		Subject subject17 = new Subject(5017, "Integralet", "matematikeEPergjithshme",false, "Obl", 4);
-        Subject subject21 = new Subject(5021, "Teoria e Numrave", "matematikeEPergjithshme",false, "Obl", 4);
-        Subject subject19 = new Subject(5019, "Gjeometria deskriptive", "matematikeEPergjithshme",false, "Obl", 4);
-        Subject subject20 = new Subject(5020, "Baza e te dhenave", "matematikeEPergjithshme",false, "Zgj", 4);
-        Subject subject22 = new Subject(5022, "Matematika Numerike", "matematikeEPergjithshme",false, "Zgj", 4);
-
-		subject17.setProgram(matematikeEPergjithshme);
-		subject21.setProgram(matematikeEPergjithshme);
-		subject19.setProgram(matematikeEPergjithshme);
-		subject20.setProgram(matematikeEPergjithshme);
-		subject22.setProgram(matematikeEPergjithshme);
-
-
-		subject1.addProfessors(new ArrayList<Professor>(Arrays.asList(professor1, professor11)));
-		subject2.addProfessors(new ArrayList<Professor>(Arrays.asList(professor2, professor8)));
-		subject3.addProfessors(new ArrayList<Professor>(Arrays.asList(professor3, professor9)));
-		subject4.addProfessors(new ArrayList<Professor>(Arrays.asList(professor4, professor41)));
-		subject5.addProfessors(new ArrayList<Professor>(Arrays.asList(professor3, professor8)));
-
-		subject17.addProfessors(new ArrayList<Professor>(Arrays.asList(professor20, asistenti4)));
-		subject19.addProfessors(new ArrayList<Professor>(Arrays.asList(professor19, professor41)));
-		subject22.addProfessors(new ArrayList<Professor>(Arrays.asList(professor21, professor9)));
-		subject21.addProfessors(new ArrayList<Professor>(Arrays.asList(professor16, asistenti13)));
-		subject20.addProfessors(new ArrayList<Professor>(Arrays.asList(professor10, asistenti8)));
-
-		subject32.addProfessors(new ArrayList<Professor>(Arrays.asList(professor4, asistenti4)));
-		subject33.addProfessors(new ArrayList<Professor>(Arrays.asList(professor16, professor161)));
-		subject34.addProfessors(new ArrayList<Professor>(Arrays.asList(professor25, professor41)));
-		subject35.addProfessors(new ArrayList<Professor>(Arrays.asList(professor15, asistenti14)));
-		subject36.addProfessors(new ArrayList<Professor>(Arrays.asList(professor24, asistenti14)));
-
-
-		subjects = new ArrayList<Subject>(Arrays.asList(subject1, subject2, subject3, subject4, subject5,
-														subject17,subject19,subject20, subject21, subject22,  
-														subject32,subject33,subject34,subject35, subject36));
+		subjects = new ArrayList<Subject>(Arrays.asList(subject1, subject2, subject3, subject4, subject5, subject6, subject7,
+														subject8, subject9, subject10, subject11, subject12, subject13, subject14,
+														subject15, subject16, subject17, subject18));
+													
 
 		studentsGroups = new ArrayList<>();
-		StudentsGroup g1shk = new StudentsGroup(101, "ShK-Gr1", 30, shkencaKomputerike, true);
-		StudentsGroup g2shk = new StudentsGroup(102, "ShK-Gr2", 25, shkencaKomputerike, true);
-		StudentsGroup gshkT = new StudentsGroup(104, "ShK-GrP", 55, shkencaKomputerike, true);
-		StudentsGroup gshk = new StudentsGroup(103, "ShK-Gr", 55, shkencaKomputerike, false);
+		StudentsGroup grL = new StudentsGroup(100, "Ligjerata", 60, shkencaKompjuterike, false, 1);
+		StudentsGroup grU = new StudentsGroup(101, "Ushtrime", 60, shkencaKompjuterike, true, 1);
+		StudentsGroup grU1 = new StudentsGroup(102, "Ushtrime - Gr.1", 30, shkencaKompjuterike, true, 1);
+		StudentsGroup grU2 = new StudentsGroup(103, "Ushtrime - Gr.2", 30, shkencaKompjuterike, true, 1);
 
-		StudentsGroup g1m = new StudentsGroup(201, "M-Gr1", 20, matematikeEPergjithshme, true);
-		StudentsGroup g2m = new StudentsGroup(202, "M-Gr2", 20, matematikeEPergjithshme, true);
-		StudentsGroup gmT = new StudentsGroup(204, "M-GrP", 40, matematikeEPergjithshme, true);
-		StudentsGroup gm = new StudentsGroup(203, "M-Gr", 40, matematikeEPergjithshme, false);
+		StudentsGroup agrL = new StudentsGroup(104, "Ligjerata", 60, shkencaKompjuterike, false, 3);
+		StudentsGroup agrU = new StudentsGroup(105, "Ushtrime", 60, shkencaKompjuterike, true, 3);
+		StudentsGroup agrU1 = new StudentsGroup(106, "Ushtrime - Gr.1", 30, shkencaKompjuterike, true, 3);
+		StudentsGroup agrU2 = new StudentsGroup(107, "Ushtrime - Gr.2", 30, shkencaKompjuterike, true, 3);
+		StudentsGroup agrU3 = new StudentsGroup(106, "Ushtrime - Gr.3", 30, shkencaKompjuterike, true, 3);
+		StudentsGroup agrU4 = new StudentsGroup(107, "Ushtrime - Gr.4", 30, shkencaKompjuterike, true, 3);
+		StudentsGroup agrL1 = new StudentsGroup(104, "Ligjerata", 20, shkencaKompjuterike, false, 3);
 
-		StudentsGroup gmf = new StudentsGroup(304, "MF-Gr", 25, matematikeFinanciare, false);
-		StudentsGroup gmfT = new StudentsGroup(303, "MF-Gr1", 25, matematikeFinanciare, true);
 
+		StudentsGroup bgrL = new StudentsGroup(108, "Ligjerata", 50, shkencaKompjuterike, false, 5);
+		StudentsGroup bgrU = new StudentsGroup(109, "Ushtrime", 50, shkencaKompjuterike, true, 5);
+		StudentsGroup bgrU1 = new StudentsGroup(110, "Ushtrime - Gr.1", 25, shkencaKompjuterike, true, 5);
+		StudentsGroup bgrU2 = new StudentsGroup(111, "Ushtrime - Gr.2", 25, shkencaKompjuterike, true, 5);
+		StudentsGroup bgrU3 = new StudentsGroup(112, "Ushtrime - Gr.3", 25, shkencaKompjuterike, true, 5);
+		StudentsGroup bgrU4 = new StudentsGroup(113, "Ushtrime - Gr.4", 25, shkencaKompjuterike, true, 5);
+		StudentsGroup bgrL1 = new StudentsGroup(114, "Ligjerata", 30, shkencaKompjuterike, true, 5);
+		StudentsGroup bgrUv = new StudentsGroup(115, "Ushtrime", 30, shkencaKompjuterike, true, 5);
 
-		studentsGroups.add(g1shk);
-		studentsGroups.add(g2shk);
-		studentsGroups.add(gshk);
-		studentsGroups.add(g1m);
-		studentsGroups.add(g2m);
-		studentsGroups.add(gm);
-		studentsGroups.add(gmfT);
-		studentsGroups.add(gmT);
-		studentsGroups.add(gshkT);
-		studentsGroups.add(gmf);
-
-		matematikeEPergjithshme.addStudentGroups(new ArrayList<StudentsGroup>(Arrays.asList(gm, g1m, g2m, gmT)));
-		shkencaKomputerike.addStudentGroups(new ArrayList<StudentsGroup>(Arrays.asList(gshk, g1shk, g2shk, gshkT)));
-		matematikeFinanciare.addStudentGroups(new ArrayList<StudentsGroup>(Arrays.asList(gmf, gmfT)));
 		
-		gm.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject17,subject19,subject20, subject21, subject22)));
-		gmT.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject17,subject19,subject20, subject21))); 
-		g1m.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject22))); 
-		g2m.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject22))); 
+		studentsGroups.add(grL);
+		studentsGroups.add(grU);
+		studentsGroups.add(grU1);
+		studentsGroups.add(grU1);
+		studentsGroups.add(agrL);
+		studentsGroups.add(agrU);
+		studentsGroups.add(agrU1);
+		studentsGroups.add(agrU2);
+		studentsGroups.add(agrU3);
+		studentsGroups.add(agrU4);
+		studentsGroups.add(agrL1);
+		studentsGroups.add(bgrL);
+		studentsGroups.add(bgrU);
+		studentsGroups.add(bgrU1);
+		studentsGroups.add(bgrU2);
+		studentsGroups.add(bgrU3);
+		studentsGroups.add(bgrU4);
+		studentsGroups.add(bgrL1);
+		studentsGroups.add(bgrUv);
 
-		gshk.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject1, subject2, subject3, subject4, subject5)));
-		gshkT.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject2, subject4))); 
-		g1shk.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject1, subject3, subject5))); 
-		g2shk.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject1, subject3, subject5)));
 
-		gmf.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject32,subject33,subject34,subject35, subject36)));
-		gmfT.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject32,subject33,subject34,subject35, subject36))); 
+		shkencaKompjuterike.addStudentGroups(new ArrayList<StudentsGroup>(Arrays.asList(grL, grU, grU1, grU2, agrL, agrL1, agrU, agrU1, agrU2, agrU3, agrU4, bgrL, bgrL1, bgrU, bgrU1, bgrU2, bgrU3, bgrU4, bgrUv)));
+		
+		grL.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject1, subject2, subject3, subject4, subject5)));
+		grU.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject5))); 
+		grU1.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject1, subject2, subject3, subject4))); 
+		grU2.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject1, subject2, subject3, subject4)));
+
+		agrL.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject6, subject7, subject8, subject9, subject10)));
+		agrL1.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject11)));
+		agrU.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject6))); 
+		agrU1.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject7, subject8, subject9, subject10))); 
+		agrU2.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject7, subject8, subject9, subject10)));
+		agrU3.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject10))); 
+		agrU4.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject10)));
+
+		bgrL.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject12, subject13, subject14, subject17)));
+		bgrL1.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject15, subject16, subject18)));
+		bgrU.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject12, subject17))); 
+		bgrUv.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject15, subject18))); 
+		bgrU1.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject13, subject14))); 
+		bgrU2.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject13, subject14)));
+		bgrU3.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject14))); 
+		bgrU4.getSubjects().addAll(new ArrayList<Subject>(Arrays.asList(subject14)));
+
 		return this;
         
 	}

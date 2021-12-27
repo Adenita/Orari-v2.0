@@ -4,17 +4,18 @@ import java.util.ArrayList;
 
 public class Subject 
 {
-    private int subjectID;
-    private String name;
-    private Program programm;
-    private String program;
-    private boolean requiresLab;
-    private String stat;
-    private int semester;
-    private ArrayList<Professor> adequateProfessors;
-    private ArrayList<Professor> adequateAssistant;
+    public int subjectID;
+    public String name;
+    public Program programm;
+    public String program;
+    public boolean requiresLab;
+    public String stat;
+    public int semester;
+    public int etcs;
+    public ArrayList<Professor> adequateProfessors;
+    public ArrayList<Professor> adequateAssistant;
 
-    public Subject(int subjectID, String name, String program, boolean requiresLab, String stat, int semester) 
+    public Subject(int subjectID, String name, int etcs, String program, boolean requiresLab, String stat, int semester) 
     {
         this.subjectID = subjectID;
         this.name = name;
@@ -22,6 +23,7 @@ public class Subject
         this.requiresLab = requiresLab;
         this.stat = stat;
         this.semester = semester;
+        this.etcs = etcs;
         adequateProfessors = new ArrayList<Professor>();
         adequateAssistant = new ArrayList<Professor>();
     }
@@ -30,6 +32,9 @@ public class Subject
         return subjectID;
     }
 
+    public int getEtcs() {
+        return etcs;
+    }
     public String getName() {
         return name;
     }

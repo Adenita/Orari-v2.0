@@ -1,10 +1,16 @@
 package geneticAlgorithm;
 
+
 public class Collision 
 {
     private int row;
     private int column;
-    private boolean[][] collisionTable = new boolean[34][7];
+    private boolean[][] collisionTable;
+
+    Schedule schedule;
+    public Collision(boolean[][] collisionTable) {
+        this.collisionTable = collisionTable;
+    }
 
     public void setRow(int row) {
         this.row = row;
@@ -22,9 +28,9 @@ public class Collision
         return column;
     }
 
-    public void setCollisonTable(boolean[][] collisionTable){
-        this.collisionTable = collisionTable;
-    }
+    // public void setCollisonTable(boolean[][] collisionTable){
+    //     this.collisionTable = collisionTable;
+    // }
 
     public boolean[][] getCollisionTable() {
         return collisionTable;

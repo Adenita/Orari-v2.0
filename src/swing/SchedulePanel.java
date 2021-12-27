@@ -1,6 +1,7 @@
 package swing;
 
 import java.awt.Dimension;
+// import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -30,6 +31,7 @@ public class SchedulePanel extends JPanel
     private JScrollPane scrollPane;
     public Population pop;
     GeneticAlgorithm ga;
+    static int generation = 0;
 
 
     public SchedulePanel(Data data) 
@@ -37,13 +39,11 @@ public class SchedulePanel extends JPanel
         this.data = data;
         setPanel();
         
-        int generation = 0;
         ga = new GeneticAlgorithm(data);
         pop = new Population(populationSize, data).sortByFitness();
 
         getTables(pop, generation);
         styleTable(table);
-        ++generation;
 
         scrollPane = new JScrollPane(table);
         add(scrollPane);
@@ -53,7 +53,7 @@ public class SchedulePanel extends JPanel
 
     // Style panel
     public void setPanel(){
-        this.setPreferredSize(new Dimension(1000, 580));
+        this.setPreferredSize(new Dimension(1020, 700));
         this.setBackground(Color.white);
         this.setFocusable(true); 
         this.setLayout(new FlowLayout());
@@ -68,36 +68,40 @@ public class SchedulePanel extends JPanel
         styleTable(table);
         scrollPane = new JScrollPane(table);
         add(scrollPane);
-       
+        generation++;
         revalidate();
         repaint();                    
     }
 
     public void getTables(Population pop, int generation) {
         table = new JTable(getData(pop.getSchedules().get(0), generation), getTableHeader());
-        table.setPreferredScrollableViewportSize(new Dimension(1000, 550));
+        table.setPreferredScrollableViewportSize(new Dimension(1000, 700));
         table.setFillsViewportHeight(true);
     }
 
     public void styleTable(JTable table) {
         
-        table.getColumnModel().getColumn(0).setPreferredWidth(100);
-        table.getColumnModel().getColumn(1).setPreferredWidth(100);
-        table.getColumnModel().getColumn(2).setPreferredWidth(200);
-        table.getColumnModel().getColumn(3).setPreferredWidth(150);
-        table.getColumnModel().getColumn(4).setPreferredWidth(150);
-        table.getColumnModel().getColumn(5).setPreferredWidth(150);
+        table.getColumnModel().getColumn(0).setPreferredWidth(50);
+        table.getColumnModel().getColumn(1).setPreferredWidth(120);
+        table.getColumnModel().getColumn(2).setPreferredWidth(300);
+        table.getColumnModel().getColumn(3).setPreferredWidth(120);
+        table.getColumnModel().getColumn(4).setPreferredWidth(120);
+        table.getColumnModel().getColumn(5).setPreferredWidth(100);
         table.getColumnModel().getColumn(6).setPreferredWidth(150);
 
         tableRenderer = new CustomTableRenderer(pop.getSchedules().get(0));
         table.setDefaultRenderer(String.class, tableRenderer);
 
         tableRenderer.setHorizontalAlignment(JLabel.CENTER);
-        table.setFont(new Font("Georgia", Font.PLAIN, 12));
+        table.setFont(new Font("Georgia", Font.PLAIN, 11));
 
         for (int i = 0; i < 7; i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(tableRenderer);
         }
+
+        // for (int i = 0; i < pop.getSchedules().get(0).getEvents().size(); i++) {
+        //     table.setRowHeight(i, 15);
+        // }
     }
 
     public String[][] getData(Schedule schedule, int generation) 
@@ -106,7 +110,7 @@ public class SchedulePanel extends JPanel
         String[][] string = new String[events.size()][7];
         yp = 0;
         events.forEach(x -> {
-            int majorIndex = data.getPrograms().indexOf(x.getSubject().getProgram());
+            //int majorIndex = data.getPrograms().indexOf(x.getSubject().getProgram());
             int subjectIndex = data.getSubjects().indexOf(x.getSubject());
             int roomIndex = data.getAllClassrooms().indexOf(x.getClassroom());
             int professorIndex = data.getProfessors().indexOf(x.getProfessor());
@@ -114,7 +118,7 @@ public class SchedulePanel extends JPanel
             int studentsGroupIndex = data.getAllStudentsGroups().indexOf(x.getGroup());
 
             string[yp][0] = String.format(" %1$02d", classNum);
-            string[yp][1] = String.format("%1$4s", data.getPrograms().get(majorIndex).getName());
+            string[yp][1] = String.format("%1$4s", "ShK, Semester: " + data.getSubjects().get(subjectIndex).getSemester());
             string[yp][2] = String.format("%1$4s", data.getSubjects().get(subjectIndex).getName() + " (" + data.getSubjects().get(subjectIndex).getStat() + ")" );
             string[yp][3] = String.format("%1$12s", data.getAllClassrooms().get(roomIndex).getName() + " (" + x.getClassroom().getNumberOfSeats() + ")");
             string[yp][4] = String.format("%1$10s", data.getAllStudentsGroups().get(studentsGroupIndex).getName() + " (" + data.getAllStudentsGroups().get(studentsGroupIndex).getNumberOfStudents() + ")");

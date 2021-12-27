@@ -21,7 +21,7 @@ public class Schedule
     }
 
     public Schedule initialize() {
-            data.getPrograms().forEach(prog -> data.getSubjectsPerSemester(prog.getName(), 4).forEach(subject -> {
+            data.getPrograms().forEach(prog -> data.getSubjects().forEach(subject -> {
                 data.getStudentGroupsPerProgram(subject.getName(), prog.getName()).forEach(group -> {
                     Event newEvent = new Event(subject);
                     newEvent.setLectureTime(data.getLectureTimes().get((int)(data.getLectureTimes().size() * Math.random())));
@@ -55,19 +55,19 @@ public class Schedule
 
     private double calcFitness() {
         numberOfConflicts = 0;
-        bool = new boolean[34][7];
+        bool = new boolean[events.size()][7];
         fillBool(bool);
         events.forEach(x -> {
             if (x.getClassroom().getNumberOfSeats() < x.getGroup().getNumberOfStudents()) { 
                 numberOfConflicts++; 
-                bool[x.getId() % 34][3] = true;
-                bool[x.getId() % 34][4] = true;
+                bool[x.getId() % events.size()][3] = true;
+                bool[x.getId() % events.size()][4] = true;
                 x.setConflict(true);
             }
             if (x.getProfessor().getPreferedStartTime() > x.getLectureTime().getStartTime().toMinutes()) {
                 numberOfConflicts++;
-                 bool[x.getId() % 34][5] = true;
-                 bool[x.getId() % 34][6] = true;
+                 bool[x.getId() % events.size()][5] = true;
+                 bool[x.getId() % events.size()][6] = true;
                 x.setConflict(true);
             }
             events.forEach(y -> { 
@@ -75,18 +75,18 @@ public class Schedule
                     if (x.getLectureTime().collision(y.getLectureTime())) {
                         if (x.getClassroom().getClassID() == (y.getClassroom().getClassID())) {
                             numberOfConflicts++;
-                            bool[y.getId()  % 34][3] = true;
-                            bool[y.getId() % 34][6] = true;
-                            bool[x.getId() % 34][3] = true;
-                            bool[x.getId() % 34][6] = true;
+                            bool[y.getId() % events.size()][3] = true;
+                            bool[y.getId() % events.size()][6] = true;
+                            bool[x.getId() % events.size()][3] = true;
+                            bool[x.getId() % events.size()][6] = true;
                             y.setConflict(true);
                         }
                         if (x.getProfessor().getID() ==  y.getProfessor().getID()) {
                             numberOfConflicts++;
-                            bool[y.getId() % 34][5] = true;
-                            bool[y.getId() % 34][6] = true;
-                            bool[x.getId() % 34][5] = true;
-                            bool[x.getId() % 34][6] = true;
+                            bool[y.getId() % events.size()][5] = true;
+                            bool[y.getId() % events.size()][6] = true;
+                            bool[x.getId() % events.size()][5] = true;
+                            bool[x.getId() % events.size()][6] = true;
                             y.setConflict(true);
                         }   
                     }

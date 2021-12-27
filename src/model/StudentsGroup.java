@@ -10,16 +10,22 @@ public class StudentsGroup
     private Program program;
     private boolean isExercise;
     private ArrayList<Subject> subjects;
+    private int semester;
 
-    public StudentsGroup (int groupID, String name, int numberOfStudents, Program program, boolean isExercise) 
+    public StudentsGroup (int groupID, String name, int numberOfStudents, Program program, boolean isExercise, int semester) 
     {
         this.groupID = groupID;
         this.name = name;
         this.numberOfStudents = numberOfStudents;
         this.program = program;
         this.isExercise = isExercise;
+        this.semester = semester;
 
         this.subjects = new ArrayList<Subject>();
+    }
+
+    public int getSemester() {
+        return semester;
     }
 
     public Program getProgram() {

@@ -23,15 +23,14 @@ public class CustomTableRenderer extends DefaultTableCellRenderer {
 
         Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-        collision = new Collision();
-        collision.setCollisonTable(schedule.getCollisionTable());
+        collision = new Collision(schedule.getCollisionTable());
     
         if (collision.getCollisionTable()[row][column] == true) {
             component.setForeground(Color.RED);
             component.setFont(new Font("Times New Roman", Font.BOLD, 12));
         }
         else {
-        component.setForeground(Color.black);
+            component.setForeground(Color.black);
         }
         
         return component;

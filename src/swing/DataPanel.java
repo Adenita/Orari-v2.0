@@ -41,6 +41,7 @@ public class DataPanel extends JPanel {
 
     JTextField idSText;
     JTextField nameSText;
+    JTextField etcsText;
     JTextField programSText;
     JTextField labText;
     JTextField statText;
@@ -48,6 +49,7 @@ public class DataPanel extends JPanel {
 
     JLabel idSLabel;
     JLabel nameSLabel;
+    JLabel etcsLabel;
     JLabel programLabel;
     JLabel labLabel;
     JLabel statLabel;
@@ -55,8 +57,9 @@ public class DataPanel extends JPanel {
 
     
     String[] header = {"ID", "Full Name", "Job Title", "StartTime (in Minutes)"};
-    String[] headerS = {"ID", "Name", "Program", "RequiresLab", "Status", "Semester"};
+    String[] headerS = {"ID", "Name", "Etcs", "Program", "RequiresLab", "Status", "Semester"};
     private JButton updatePButton;
+    private JButton updateSButton;
 
     public DataPanel(){
         data = new Data();
@@ -66,7 +69,6 @@ public class DataPanel extends JPanel {
     void initialise() {
         this.setBackground(Color.gray);
         this.setLayout(new BorderLayout());
-       // this.setSize(new Dimension(800, 400));
 
         getTable();
         getTableS();
@@ -76,7 +78,6 @@ public class DataPanel extends JPanel {
 
         JLabel label = new JLabel("Schedule Data", SwingConstants.CENTER);
         label.setFont(new Font("Georgia", Font.BOLD, 20));
-       // label.setBackground(Color.black);
         label.setForeground(Color.black);
 
         this.add(label, BorderLayout.NORTH);
@@ -135,10 +136,11 @@ public class DataPanel extends JPanel {
         
         subjectTable.getColumnModel().getColumn(0).setPreferredWidth(30);
         subjectTable.getColumnModel().getColumn(1).setPreferredWidth(90);
-        subjectTable.getColumnModel().getColumn(2).setPreferredWidth(70);
-        subjectTable.getColumnModel().getColumn(3).setPreferredWidth(30);
-        subjectTable.getColumnModel().getColumn(4).setPreferredWidth(20);
+        subjectTable.getColumnModel().getColumn(2).setPreferredWidth(30);
+        subjectTable.getColumnModel().getColumn(3).setPreferredWidth(70);
+        subjectTable.getColumnModel().getColumn(4).setPreferredWidth(30);
         subjectTable.getColumnModel().getColumn(5).setPreferredWidth(20);
+        subjectTable.getColumnModel().getColumn(6).setPreferredWidth(20);
 
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         table.setFont(new Font("Georgia", Font.PLAIN, 10));
@@ -159,7 +161,7 @@ public class DataPanel extends JPanel {
 
     void displaySubjectDetails() {
         for (int i = 0; i < data.subjects.size(); i++) {
-            Object[] obj = {data.subjects.get(i).getID(), data.subjects.get(i).getName(), data.subjects.get(i).getProgramN(), data.subjects.get(i).isLabRequired(), data.subjects.get(i).getStat(), data.subjects.get(i).getSemester()};
+            Object[] obj = {data.subjects.get(i).getID(), data.subjects.get(i).getName(), data.subjects.get(i).getEtcs(), data.subjects.get(i).getProgramN(), data.subjects.get(i).isLabRequired(), data.subjects.get(i).getStat(), data.subjects.get(i).getSemester()};
             tableModelS.addRow(obj);
         }
     }
@@ -170,7 +172,7 @@ public class DataPanel extends JPanel {
         buttonPanel.setBackground(Color.black);
 
         generate = new JButton("Schedule");
-        generate.setPreferredSize(new Dimension(95, 25));
+        generate.setPreferredSize(new Dimension(110, 25));
         generate.setFont(new Font("Georgia", Font.BOLD, 10 ));
         generate.addActionListener(new ActionListener() {
 
@@ -180,8 +182,8 @@ public class DataPanel extends JPanel {
             }
         });
 
-        updatePButton = new JButton("Update Prof");
-        updatePButton.setPreferredSize(new Dimension(95, 25));
+        updatePButton = new JButton("Update Prof. ");
+        updatePButton.setPreferredSize(new Dimension(110, 25));
         updatePButton.setFont(new Font("Georgia", Font.BOLD, 10 ));
         updatePButton.addActionListener(new ActionListener() {
 
@@ -195,9 +197,29 @@ public class DataPanel extends JPanel {
 
             }
         });
+
+        updateSButton = new JButton("Update Subj. ");
+        updateSButton.setPreferredSize(new Dimension(110, 25));
+        updateSButton.setFont(new Font("Georgia", Font.BOLD, 10 ));
+        updateSButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                data.subjects.get(subjectTable.getSelectedRow()).subjectID= Integer.parseInt(idSText.getText());
+                data.subjects.get(subjectTable.getSelectedRow()).name = nameSText.getText();
+                data.subjects.get(subjectTable.getSelectedRow()).etcs = Integer.parseInt(etcsText.getText());
+                data.subjects.get(subjectTable.getSelectedRow()).program = programSText.getText();
+                data.subjects.get(subjectTable.getSelectedRow()).requiresLab = Boolean.parseBoolean(labText.getText());
+                data.subjects.get(subjectTable.getSelectedRow()).stat = statText.getText();
+                data.subjects.get(subjectTable.getSelectedRow()).semester = Integer.parseInt(semesterText.getText());
+                displaySubjectDetails();
+
+            }
+        });
  
  
         buttonPanel.add(updatePButton);
+        buttonPanel.add(updateSButton);
         buttonPanel.add(generate);
     }
     
@@ -208,23 +230,18 @@ public class DataPanel extends JPanel {
         panel = new JPanel();
         //panel.setBackground(Color.PINK);
         panel.setSize(300,300);
-        panel.setLayout(new GridLayout(12, 2));
+        panel.setLayout(new GridLayout(14, 2));
        // panel.setBorder(new LineBorder(Color.black, 1));
 
         idLabel =    new JLabel("Professor ID:        ");
         idLabel.setFont(new Font("Georgia", Font.BOLD, 12 ));
-        //idLabel.setBounds(50, 50, 50, 15);
-
         idText = new JTextField();
         idText.setPreferredSize(new Dimension(100, 25));
-       // idText.setBounds(200, 50, 80,15);
 
         nameLabel =  new JLabel("Professor Full Name: ");
         nameLabel.setFont(new Font("Georgia", Font.BOLD, 12 ));
-       // nameLabel.setBounds(50, 70, 50, 15);
         nameText = new JTextField();
         nameText.setPreferredSize( new Dimension( 100, 25 ) );
-        //nameLabel.setBounds(200, 70, 80, 15);
 
         titleLabel = new JLabel("Professor Title:     ");
         titleLabel.setFont(new Font("Georgia", Font.BOLD, 12 ));
@@ -246,6 +263,11 @@ public class DataPanel extends JPanel {
         nameSLabel.setFont(new Font("Georgia", Font.BOLD, 12 ));
         nameSText = new JTextField();
         nameSText.setPreferredSize( new Dimension( 100, 25 ) );
+
+        etcsLabel =  new JLabel("Etcs: ");
+        etcsLabel.setFont(new Font("Georgia", Font.BOLD, 12 ));
+        etcsText = new JTextField();
+        etcsText.setPreferredSize( new Dimension( 100, 25 ) );
 
         programLabel = new JLabel("Program Name:     ");
         programLabel.setFont(new Font("Georgia", Font.BOLD, 12 ));
@@ -291,11 +313,12 @@ public class DataPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                int subID = Integer.parseInt(idSText.getText());
                String name = nameSText.getText();
+               int etcs = Integer.parseInt(etcsText.getText());
                String program = programSText.getText();
                Boolean lab = Boolean.parseBoolean(labText.getText());
                String status = statText.getText();
                int semester = Integer.parseInt(semesterText.getText());
-               data.subjects.add(new Subject(subID, name, program, lab, status, semester));
+               data.subjects.add(new Subject(subID, name, etcs, program, lab, status, semester));
                displaySubjectDetails();
                clearFieldS();
             }
@@ -350,10 +373,6 @@ public class DataPanel extends JPanel {
         });
 
 
-        JLabel blank = new JLabel("");
-        JLabel blankS = new JLabel("");
-
-
         panel.add(idLabel);
         panel.add(idText);
         panel.add(nameLabel);
@@ -370,6 +389,8 @@ public class DataPanel extends JPanel {
         panel.add(idSText);
         panel.add(nameSLabel);
         panel.add(nameSText);
+        panel.add(etcsLabel);
+        panel.add(etcsText);
         panel.add(programLabel);
         panel.add(programSText);
         panel.add(labLabel);
