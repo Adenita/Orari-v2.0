@@ -74,7 +74,13 @@ public class SchedulePanel extends JPanel
     }
 
     public void getTables(Population pop, int generation) {
-        table = new JTable(getData(pop.getSchedules().get(0), generation), getTableHeader());
+        table = new JTable(getData(pop.getSchedules().get(0), generation), getTableHeader()) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+               //all cells false
+               return false;
+            }
+        };
         table.setPreferredScrollableViewportSize(new Dimension(1000, 700));
         table.setFillsViewportHeight(true);
     }

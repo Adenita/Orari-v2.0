@@ -88,14 +88,26 @@ public class DataPanel extends JPanel {
     }
 
     void getTable() {
-        tableModel = new DefaultTableModel(header, 0);
+        tableModel = new DefaultTableModel(header, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+               //all cells false
+               return false;
+            }
+        };
         professorTable = new JTable(tableModel);
         displayProfessorDetails();
         styleTable(professorTable);
     }
 
     void getTableS() {
-        tableModelS = new DefaultTableModel(headerS, 0);
+        tableModelS = new DefaultTableModel(headerS, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+               //all cells false
+               return false;
+            }
+        };
         subjectTable = new JTable(tableModelS);
         displaySubjectDetails();
         styleTableS(subjectTable);
@@ -384,7 +396,11 @@ public class DataPanel extends JPanel {
         panel.add(addButton);
         panel.add(deleteButton);
 
-        
+        JLabel bl = new JLabel("");
+        JLabel bn = new JLabel("");
+
+        panel.add(bl);
+        panel.add(bn);
         panel.add(idSLabel);
         panel.add(idSText);
         panel.add(nameSLabel);
@@ -422,5 +438,6 @@ public class DataPanel extends JPanel {
         labText.setText("");
         statText.setText("");
         semesterText.setText("");
+        etcsText.setText("");
     }
 }
